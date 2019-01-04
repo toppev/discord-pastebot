@@ -30,14 +30,11 @@ async def on_message(message):
         split = content.splitlines();
         first = split[0]
         min_length = config.getint("SETTINGS", "preview_min_length")
-        print(len(first))
-        print(str(min_length))
         if(len(first) < min_length):
             first = content[:min_length]
-            print(len(first))
-        result = pastebin.paste(paste_code=content, paste_name=author.display_name + "'s message").response.decode("utf-8")
+        result = pastebin.paste(paste_code=content, paste_name=author.display_name + "'s message").decode("utf-8")
         if "https://" in result:
-            logging.info("Created a new paste of ", author.display_name, "'s message: ", result)
+            logging.info("Created a new paste of " + author.display_name + "'s message: " + result)
             await bot.send_message(channel, "[Long message] " + first + "... \nBy: " + author.display_name + "\n " + result)
             await bot.delete_message(message)
         else:
