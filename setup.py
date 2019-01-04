@@ -19,8 +19,10 @@ setuptools.setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Topic :: Internet",
         "Topic :: Communications :: Chat",
-        "Framework :: AsyncIO",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
