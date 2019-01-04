@@ -1,0 +1,7 @@
+[SETTINGS]
+api_dev_key = YourPastebinAPIKeyHere
+bot_token: YourBotTokenHere
+max_message_length = 500
+private_paste = 0
+preview_min_length = 20
+paste_expire = 1M
