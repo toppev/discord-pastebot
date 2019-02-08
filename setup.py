@@ -15,7 +15,7 @@ setuptools.setup(
         "discord.py>=0.16.12"
     ],
     
-    package_data={'': ['config.txt']},
+    package_data={"": ["config.txt"]},
     include_package_data=True,
     
     classifiers=[
