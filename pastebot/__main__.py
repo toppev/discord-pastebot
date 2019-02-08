@@ -30,11 +30,8 @@ async def on_message(message):
         codeBlock = "```"
         if content.startswith(codeBlock) and content.endswith(codeBlock):
             content = content[len(codeBlock):-len(codeBlock)]
-        split = content.splitlines()
-        first = split[0]
         min_length = config.getint("SETTINGS", "preview_min_length")
-        if(len(first) < min_length):
-            first = content[:min_length]
+        first = content[:min_length]
         result = pastebin.paste(paste_code=content, paste_name=author.display_name + "'s message").decode("utf-8")
         if "https://" in result:
             logging.info("Created a new paste of " + author.display_name + "'s message: " + result)
