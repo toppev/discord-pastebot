@@ -13,7 +13,7 @@ path = os.path.dirname(os.path.dirname(os.path.abspath(inspect.getfile(inspect.c
 config = configparser.SafeConfigParser()
 config.read(os.path.join(path, "config.txt"))
 desc = 'A simple bot that creates pastebin pastes of long messages (e.g. code snippets and errors)'
-bot = commands.Bot(command_prefix='!', description=desc)
+bot = commands.Bot(command_prefix='thereAreNoCommands', description=desc)
 
 
 @bot.event
@@ -27,7 +27,10 @@ async def on_message(message):
     channel = message.channel
     author = message.author
     if not author.bot and len(content) > config.getint("SETTINGS", "max_message_length"):
-        split = content.splitlines();
+        codeBlock = "```"
+        if content.startswith(codeBlock) and content.endswith(codeBlock):
+            content = content[len(codeBlock):-len(codeBlock)]
+        split = content.splitlines()
         first = split[0]
         min_length = config.getint("SETTINGS", "preview_min_length")
         if(len(first) < min_length):
