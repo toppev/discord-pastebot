@@ -27,15 +27,15 @@ async def on_message(message):
     channel = message.channel
     author = message.author
     if not author.bot and len(content) > config.getint("SETTINGS", "max_message_length"):
-        codeBlock = "```"
-        if content.startswith(codeBlock) and content.endswith(codeBlock):
-            content = content[len(codeBlock):-len(codeBlock)]
+        code_block = "```"
+        if content.startswith(code_block) and content.endswith(code_block):
+            content = content[len(code_block):-len(code_block)]
         min_length = config.getint("SETTINGS", "preview_min_length")
         first = content[:min_length]
         result = pastebin.paste(paste_code=content, paste_name=author.display_name + "'s message").decode("utf-8")
         if "https://" in result:
             logging.info("Created a new paste of " + author.display_name + "'s message: " + result)
-            await bot.send_message(channel, "[Long message] " + first + "... \nBy: " + author.display_name + "\n " + result)
+            await bot.send_message(channel, "[Long message] \n" + code_block + first + "..." + code_block + "\nBy: " + author.display_name + "\n " + result)
             await bot.delete_message(message)
         else:
             logging.warning("Failed to create a new paste: " + result)
