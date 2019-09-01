@@ -20,7 +20,7 @@ setuptools.setup(
     
     classifiers=[
         "Development Status :: 3 - Alpha",
-        "License :: OSI Approved :: MIT License",
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Topic :: Internet",
